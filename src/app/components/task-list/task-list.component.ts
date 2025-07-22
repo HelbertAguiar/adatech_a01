@@ -6,6 +6,7 @@ import { Task } from 'src/app/models/task.model';
   templateUrl: './task-list.component.html'
 })
 export class TaskListComponent {
+  @Input() title = '';
   @Input() tasks: Task[] = [];
   @Output() remove = new EventEmitter<number>();
   @Output() toggle = new EventEmitter<number>();

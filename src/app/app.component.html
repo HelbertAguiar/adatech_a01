@@ -2,10 +2,21 @@
 
 <app-task-form (addTask)="handleAddTask($event)"></app-task-form>
 
+<h2>Tarefas Pendentes</h2>
 <app-task-list
-  [tasks]="tasks"
+  [tasks]="getPendingTasks()"
+  [title]="'Pendentes'"
   (remove)="handleRemoveTask($event)"
   (toggle)="handleToggleTask($event)">
 </app-task-list>
 
-<p>Total: {{ tasks.length }} | Concluídas: {{ getCompletedTasks() }}</p>
+<h2>Tarefas Concluídas</h2>
+<app-task-list
+  [tasks]="getCompletedTasks()"
+  [title]="'Concluídas'"
+  (remove)="handleRemoveTask($event)"
+  (toggle)="handleToggleTask($event)">
+</app-task-list>
+
+
+<p>Total: {{ tasks.length }} | Concluídas: {{ getCompletedCount() }}</p>

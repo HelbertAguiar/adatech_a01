@@ -22,8 +22,17 @@ export class AppComponent {
     if (task) task.completed = !task.completed;
   }
 
-  getCompletedTasks(): number {
+  getPendingTasks(): Task[] {
+    return this.tasks.filter(t => !t.completed);
+  }
+  
+  getCompletedTasks(): Task[] {
+    return this.tasks.filter(t => t.completed);
+  }
+  
+  getCompletedCount(): number {
     return this.tasks.filter(t => t.completed).length;
   }
-
+  
+  
 }
