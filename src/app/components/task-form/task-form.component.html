@@ -1,5 +1,13 @@
 <form (ngSubmit)="onSubmit()">
-    <input [(ngModel)]="newTaskTitle" name="task" placeholder="Nova tarefa" required />
-    <button type="submit">Adicionar</button>
+    <mat-form-field appearance="outline">
+      <mat-label>Nova tarefa</mat-label>
+      <input matInput [(ngModel)]="newTaskTitle" name="task" required />
+    </mat-form-field>
+    <br>
+
+    <button mat-raised-button color="primary" type="submit">
+        <mat-icon>add</mat-icon> 
+        Adicionar
+    </button>
 </form>
   

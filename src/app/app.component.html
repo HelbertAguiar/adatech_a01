@@ -1,22 +1,30 @@
-<h1>Atividade: Todo List com Angular</h1>
+<mat-toolbar color="primary">
+  <span>Atividade: Todo List com Angular</span>
+  <span class="spacer"></span>
+  
+  <div class="task-counter">
+    <mat-icon color="primary">check_circle</mat-icon>
+    <span>Total: {{ tasks.length }} | Concluídas: {{ getCompletedCount() }}</span>
+  </div>
+  
+</mat-toolbar>
 
-<app-task-form (addTask)="handleAddTask($event)"></app-task-form>
+<div class="app-content">
+  <app-task-form (addTask)="handleAddTask($event)"></app-task-form>
 
-<h2>Tarefas Pendentes</h2>
-<app-task-list
-  [tasks]="getPendingTasks()"
-  [title]="'Pendentes'"
-  (remove)="handleRemoveTask($event)"
-  (toggle)="handleToggleTask($event)">
-</app-task-list>
+  <h2>Tarefas Pendentes</h2>
+  <app-task-list
+    [tasks]="getPendingTasks()"
+    [title]="'Pendentes'"
+    (remove)="handleRemoveTask($event)"
+    (toggle)="handleToggleTask($event)">
+  </app-task-list>
 
-<h2>Tarefas Concluídas</h2>
-<app-task-list
-  [tasks]="getCompletedTasks()"
-  [title]="'Concluídas'"
-  (remove)="handleRemoveTask($event)"
-  (toggle)="handleToggleTask($event)">
-</app-task-list>
-
-
-<p>Total: {{ tasks.length }} | Concluídas: {{ getCompletedCount() }}</p>
+  <h2>Tarefas Concluídas</h2>
+  <app-task-list
+    [tasks]="getCompletedTasks()"
+    [title]="'Concluídas'"
+    (remove)="handleRemoveTask($event)"
+    (toggle)="handleToggleTask($event)">
+  </app-task-list>
+</div>

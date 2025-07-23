@@ -1,8 +1,20 @@
-<h3 *ngIf="title">{{ title }}</h3>
+<mat-card class="task-list-card" *ngIf="tasks?.length; else emptyState">
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <ng-container *ngFor="let task of tasks">
+      <app-task-item
+        [task]="task"
+        (remove)="remove.emit($event)"
+        (toggle)="toggle.emit($event)">
+      </app-task-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-card-content>
+</mat-card>
 
-<app-task-item
-  *ngFor="let task of tasks"
-  [task]="task"
-  (remove)="remove.emit($event)"
-  (toggle)="toggle.emit($event)">
-</app-task-item>
+<ng-template #emptyState>
+  <p>Nenhuma tarefa {{ title.toLowerCase() }}.</p>
+</ng-template>
